@@ -1,3 +1,10 @@
+2.0.3 Add XHDR response for newsreaders that require it
+
+  - Give a successsful response to clients that request XHDR and tell you
+    you don't support it (no actual functionality, though)
+  - Add MODE to help text recognized responses
+  - Add XHDR to help text recognized responses
+
 2.0.2 Add logging for which message bases are accessed
 
   - Update CHANGELOG
