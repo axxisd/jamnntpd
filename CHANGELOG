@@ -1,3 +1,25 @@
+2.0.1 Add patches by @cnb
+
+  - Fix for UTF-8 level parameter
+  - Use server version for PID kludge
+  - MODE READER patch (some newsreaders don't like response 500 to MODE READER
+    command
+  - Fix text and header corruption issues
+  - Fix issue with lines starting with a "."
+
+2.0.0 Initial commit of new fork + General cleanup
+
+  - Rename History.txt to CHANGELOG
+  - Rename ReadMe.txt to README
+  - Merge ReadMe_hpt.txt into README, and remove it
+  - Merge 'unicode/ReadMe.txt' and unicode xlat config into standard README
+    and sample config
+  - Move unicode *.chs files to standard 'xlat' subdirectory and remove
+    'unicode' directory
+  - Add 'util' directory and place the jamnntpd related perl scripts the 
+    README mentions so people don't have to ask and/or search for them
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Changes in version 1.3
 
