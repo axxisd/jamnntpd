@@ -1,18 +1,20 @@
 
-                               JamNNTPd 1.3
+                               JamNNTPd 2.0
 
-            Copyright 2003-2005, Johan Billing (billing@df.lth.se)
-            Copyright 2009, Peter Krefting (peter@softwolves.pp.se)
+            Copyright 2003-2005 Johan Billing (billing@df.lth.se)
+            Copyright 2009 Peter Krefting (peter@softwolves.pp.se)
             Copyright 2008-2016 Robert James Clay (jame@rocasa.us)
+            Copyright 2024 Nicholas Boel (axxisd@gmail.com)
 
                                 2016-09-10
 
 
 1. Introduction
 ===============
+
 JamNNTPd is an attempt to merge dying fidonet technology with modern Usenet
 newsreaders. Basically, JamNNTPd is NNTP server that allows newsreaders to
-access a JAM messagebase. (If you didn't understand a word of this, you
+access a JAM message base. (If you didn't understand a word of this, you
 probably don't want to use JamNNTPd anyway).
 
 JamNNTPd can be used with both Linux and Windows. An executable binary is
@@ -20,6 +22,7 @@ only suppplied for Windows, Linux users need to compile JamNNTPd themselves.
 
 2. Copyright
 ============
+
 The copyright of JamNNTPd belongs to Johan Billing. Permission to use, copy
 and distribute JamNNTPd is granted provided that this copyright notice is
 included. Permission to modify JamNNTPd is granted. Distributing modified
@@ -27,12 +30,13 @@ versions of JamNNTPd is allowed provided that the documentation clearly
 states that it is a modified version. Parts of JamNNTPd may be freely used
 in other projects as long as credit is given.
 
-JamNNTPd uses JAMLIB for reading and modifying JAM messagebases. JAMLIB is
+JamNNTPd uses JAMLIB for reading and modifying JAM message bases. JAMLIB is
 copyright 1996 Björn Stenberg and is released under the GNU Lesser General
 Public License (see included file src/jamlib/LICENSE).
 
 3. Security
 ===========
+
 I cannot guarantee that there are no security leaks in JamNNTPd. If you
 decide to use it, you do it on your own risk. If you use JamNNTPd under
 Linux, you should avoid running it with root privileges.
@@ -42,20 +46,21 @@ Linux, you should avoid running it with root privileges.
 
 4.1 Configuration options
 -------------------------
+
 The behaviour of JamNNTPd can be configured using the configuration options 
 specified below. These can be given to JamNNTPd in two ways:
 
-1) As commandline arguments
+1) As command line arguments
 
 2) In a configuration file (see -config command). The preceding dash (-) 
    is optional when an option is given in a file, it will be added if missing.
    A configuration file with the default settings can be created with the 
    -create option.
 
-If JamNNTPd is run without any commandline arguments at all, it will attempt 
-to read options from a file called "jamnntpd.config" if present. Under Linux, 
-JamNNTPd  will look for this file in the "/etc" directory and under Windows 
-in the current directory. 
+ * If JamNNTPd is run without any command line arguments at all, it will 
+ * attempt to read options from a file called "jamnntpd.config" if present. 
+ * Under Linux, JamNNTPd  will look for this file in the 'jamnntpd/etc' 
+ * directory and under Windows in the current directory. 
 
 It is not necessary to specify any configuration options at all unless when
 fine-tuning JamNNTPd, the default have been designed to be sensible.
@@ -120,7 +125,7 @@ Options for displaying messages:
  -def_showto on/off
 
    Sets the default of the flowed and showto settings (if no default is
-   specified on the commandline, both will be on by default)
+   specified on the command line, both will be on by default)
 
     flowed: If flowed is on, JamNNTPd will use format=flowed (section 6.5),
             otherwise it will wrap long lines to a fixed width.
@@ -194,7 +199,7 @@ Options for posting messages:
  -echomailjam <echomail.jam>
  
    If you specify a filename here, JamNNTPd will write a line to this file 
-   with the messagebase and message number for each message that is posted.
+   with the message base and message number for each message that is posted.
    The file follows the ECHOMAIL.JAM format supported by some tossers. 
  
 
@@ -211,6 +216,7 @@ Options for configuration files:
        
 4.2 Access rights
 -----------------
+
 Access rights in JamNNTPd is based on access groups. Every newsgroup in
 JamNNTPd belongs to an acess group. Access groups are named using one letter,
 typically A to Z (access groups are case-insensitive). In the configuration
@@ -229,6 +235,7 @@ defined in the "users" file.
 
 4.3 Configuration files
 -----------------------
+
 JamNNTPd uses four configuration files:
 
 1) In the "groups" file, the JAM areas that JamNNTPd should provide as
@@ -242,7 +249,7 @@ JamNNTPd uses four configuration files:
    additional groups if they log in.
 
 4) In the "xlat" file, you can configure translation between the different
-   character sets used in your JAM messagebase and your newsreader.
+   character sets used in your JAM message base and your newsreader.
 
 The format of these files can be seen in the example configuration files.
 You do not need to restart JamNNTPd if you change them since they are read
@@ -250,6 +257,7 @@ every time a new connection to the server is made.
 
 4.4 Logging in with parameters
 ------------------------------
+
 Since it is likely that all users will not prefer the same settings for the
 flowed and showto options (see section 4.1), these can be modified by the
 user by logging in with parameters.
@@ -269,6 +277,7 @@ Examples:
 
 5. Compilation
 ==============
+
 JamNNTPd should compile with most compilers. I use gcc under Linux and MinGW
 under Windows. To compile JamNNTPd, go to the src directory and type either 
 "make linux" or "make win32" depending on what platform you are compiling 
@@ -280,6 +289,7 @@ JamNNTPd on. After a successful compilation, you will find a file called
 
 6.1 The NNTP protocol
 ---------------------
+
 JamNNTPd supports most of the basic NNTP protocol as specified in RFC-977.
 The commands IHAVE, NEWGROUPS and NEWNEWS are not implemented, but at least
 give valid response codes if a newsreader tries to use them. JamNNTPd also
@@ -288,6 +298,7 @@ never sends information about the line counts and byte counts of messages.
 
 6.2 Format of news messages
 ---------------------------
+
 JamNNTPd probably breaks the RFC-1036 specification on some minor points,
 but seems to work well enough with most newsreaders.
 
@@ -304,14 +315,16 @@ rejected). Crossposted messages will be rejected. Messages longer than
 
 6.3 MSGID / Message-ID
 ----------------------
-JamNNTPd does not present the MSGIDs found in the JAM messagebase as
+
+JamNNTPd does not present the MSGIDs found in the JAM message base as
 Message-IDs to the newsreader, but rather uses its own dummy Message-IDs
 instead. The references line in followups will be replaced by the proper
 REPLY line.
 
 6.4 REPLYADDR
 -------------
-When a message is posted to a JAM messagebase, JamNNTPd converts the original
+
+When a message is posted to a JAM message base, JamNNTPd converts the original
 from address to a REPLYADDR kludge. According to FSC-0035, REPLYADDR kludges
 should be accompanied by a REPLYTO line. JamNNTPd does not create a REPLYTO
 line, but this should not be a major problem. If you want to disable the
@@ -319,6 +332,7 @@ REPLYADDR kludge altogether, use the -noreplyaddr option.
 
 6.5 format=flowed
 -----------------
+
 A recent extension to MIME (RFC-2646) specifies a format for "flowed" text,
 i. e. text that only has line breaks between paragraphs and not after every
 line. This format is more well-suited for fidonet messages than the
@@ -332,6 +346,7 @@ slightly worse both on the NNTP and fidonet side.
 
 6.6 Character set translation
 -----------------------------
+
 JamNNTPd has good support for character sets. The character set translation
 is configured in the "xlat" file and uses CHS files in the GoldED+ format for
 the actual translation. Extended CHS files with 256 character translations
@@ -339,6 +354,7 @@ are supported and a character may be translated to up to four characters.
 
 6.7 Netmail
 -----------
+
 JamNNTPd now also supports netmail. In netmail areas, users can only read
 messages to or from one of the names configured in the jamnntpd.users file.
 Replies to netmails are handled transparently and the name and address of
@@ -357,6 +373,7 @@ netmail and echomail areas.
  
 6.8 Tested newsreaders
 ----------------------
+
 JamNNTPd has been found to work with the following newsreaders:
 
    Mozilla 1.4.1
@@ -371,6 +388,7 @@ Of these, only Mozilla seems to support format=flowed.
 
 7. How to create additional *.chs files
 =======================================
+
 The *.chs files in the "xlat" and "unicode/xlat" directories are character 
 set translation tables in the GoldED+ format. The files were created from 
 mappings files found at this URL:
@@ -410,3 +428,40 @@ Examples:
 Mappings files for all imaginable character sets can be found at the Unicode 
 site above.
 
+8. Some notes on using JamNNTPd with the hpt tosser from the Husky project
+==========================================================================
+
+ * The fidoconfig2jamnntpd.pl script found on the JamNNTPd homepage can be
+   used to convert your area configuration to a jamnntpd.groups file.
+
+ * If you want JamNNTPd to display the From address correctly, you need to
+   run it with the -readorigin switch.
+
+ * When hpt creates JAM message bases, it does not create the lastread (*.jlr)
+   file. JamNNTPd will not be able to open an area unless all four JAM files
+   are present. The checkgroups.pl script from the JamNNTPd homepage can be
+   used to create missing *.jlr files.
+
+ * Do NOT pack your message base with "hptutil pack". When hptutil packs a 
+   message base, it will also renumber it. This will cause the article numbers
+   in JamNNTPd to change which will confuse most newsreaders.
+
+ * JamNNTPd can optionally create an echomail.jam file with the paths to
+   message bases with messages to export. This file can not be used to tell
+   hpt what areas to scan, but it can be converted to an echotoss.log file
+   for hpt with the echomailjam2hpt.pl script.
+
+9. How to get JamNNTPd to display texts in Unicode
+==================================================
+With the help of the utf-8 related lines in the jamnntpd.xlat file and the 
+unicode *.chs files in xlat, it is possible to get JamNNTPd to display posts 
+in Unicode.
+
+You should keep the "read" translations for iso-8859-1 in jamnntpd.xlat
+or JamNNTPd will not be able to properly translate the receiver name of
+messages that you post.
+
+It is also necessary to run JamNNTPd with the -noencode switch since the
+MIME encoder in JamNNTPd is not Unicode-aware and may otherwise choose to
+split an utf-8 character into several MIME segments. This means that you
+have to configure your newsreader to use utf-8 as the default charset.
