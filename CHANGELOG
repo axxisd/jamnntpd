@@ -1,3 +1,7 @@
+2.0.2 Add logging for which message bases are accessed
+
+  - Update CHANGELOG
+
 2.0.1 Add patches by @cnb
 
   - Fix for UTF-8 level parameter
@@ -6,6 +10,7 @@
     command
   - Fix text and header corruption issues
   - Fix issue with lines starting with a "."
+  - Update CHANGELOG
 
 2.0.0 Initial commit of new fork + General cleanup
 

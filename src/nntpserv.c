@@ -120,6 +120,7 @@ bool jamopenarea(struct var *var,struct group *group)
    }
 
    var->opengroup=group;
+   os_logwrite("(%s) Accessing JAM message base \"%s\"",var->clientid,group->jampath);
 
    return(TRUE);
 }
