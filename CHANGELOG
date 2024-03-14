@@ -1,10 +1,14 @@
-2.1.1 Fix for Win32 compilation failure (broken when IPv6 support was added)
+2.2.0 Add 'notearline' as a user toggle option during authentication
 
+  - Only truncate newsreader variable when used in tearline
+  - When config option 'notearline' is enabled:
+      Add 'NOTE: ' kludge with newsreader's user-agent information (not
+      truncated)
+  - Add user defined login option 'notearline=on/off'
+  - Update README with notes and examples about 'notearline=on/off' option
   - Update CHANGELOG
 
 2.1.0 IPv6 support added (patch by Konstantine Kuzov)
-
-  - Update CHANGELOG
 
 2.0.3 Add XHDR response for newsreaders that require it
 
@@ -12,7 +16,6 @@
     you don't support it (no actual functionality, though)
   - Add MODE to help text recognized responses
   - Add XHDR to help text recognized responses
-  - Update CHANGELOG
 
 2.0.2 Add logging for which message bases are accessed
 
@@ -39,7 +42,6 @@
     'unicode' directory
   - Add 'util' directory and place the jamnntpd related perl scripts the 
     README mentions so people don't have to ask and/or search for them
-  - Update CHANGELOG
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

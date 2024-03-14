@@ -2312,7 +2312,6 @@ void command_post(struct var *var)
    from[36]=0;
    subject[72]=0;
    organization[70]=0;
-   newsreader[75]=0;
 
    /* Check syntax */
 
@@ -2671,8 +2670,8 @@ void command_post(struct var *var)
 
    if(!g->netmail && !g->local)
    {
-      if(newsreader[0]==0 || cfg_notearline)  strcpy(line,CR "---" CR);
-      else                                    sprintf(line,CR "--- %s" CR,newsreader);
+      if(newsreader[0]==0 || var->opt_notearline)  strcpy(line,"---" CR);
+      else                                         sprintf(line,"--- %.75s" CR,newsreader);
 
       if(strlen(text) + strlen(line) < allocsize-1)
          strcat(text,line);
@@ -2742,6 +2741,11 @@ void command_post(struct var *var)
    strcpy(line,SERVER_NAME " " SERVER_PIDVERSION);
    addjamfield(SubPacket_PS,JAMSFLD_PID,line);
 
+   if(var->opt_notearline || cfg_notearline)
+   {
+      sprintf(line,"NOTE: %s",newsreader);
+      addjamfield(SubPacket_PS,JAMSFLD_FTSKLUDGE,line);
+   }
    if(xlat->tochrs[0] && !g->nochrs)
    {
       setchrscodepage(chrs,codepage,xlat->tochrs);
@@ -2825,7 +2829,7 @@ void command_post(struct var *var)
 void command_authinfo(struct var *var)
 {
    uchar *tmp,*opt,*next,*equal;
-   bool flowed,showto;
+   bool flowed,showto,notearline;
 
    if(!(tmp=parseinput(var)))
    {
@@ -2875,6 +2879,7 @@ void command_authinfo(struct var *var)
 
    flowed=var->opt_flowed;
    showto=var->opt_showto;
+   notearline=var->opt_notearline;
 
    if(strchr(var->loginname,'/'))
    {
@@ -2920,9 +2925,17 @@ void command_authinfo(struct var *var)
             return;
          }
       }
+      else if(stricmp(opt,"notearline")==0)
+      {
+         if(!(setboolonoff(equal,&notearline)))
+         {
+            sockprintf(var,"482 Unknown setting %s for option %s, use on or off" CRLF,equal,opt);
+            return;
+         }
+      }
       else
       {
-         sockprintf(var,"482 Unknown option %s, known options: flowed, showto" CRLF,opt);
+         sockprintf(var,"482 Unknown option %s, known options: flowed, showto, notearline" CRLF,opt);
          return;
       }
 
@@ -2946,6 +2959,7 @@ void command_authinfo(struct var *var)
 
    var->opt_flowed=flowed;
    var->opt_showto=showto;
+   var->opt_notearline=notearline;
 
    return;
 }
@@ -2987,6 +3001,7 @@ void server(SOCKET s)
    
    var.opt_flowed=cfg_def_flowed;
    var.opt_showto=cfg_def_showto;
+   var.opt_notearline=cfg_notearline;
 
    if(getpeername(s,(struct sockaddr *)&fromsa,&fromsa_len) == SOCKET_ERROR)
    {

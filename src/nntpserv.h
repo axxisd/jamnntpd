@@ -51,6 +51,7 @@ struct var
    
    bool opt_flowed;
    bool opt_showto;
+   bool opt_notearline;
 
    bool login;
 };
@@ -70,7 +71,7 @@ struct var
 #define CRLF CR LF
 
 #define SERVER_NAME       "jamnntpd/" PLATFORM_NAME
-#define SERVER_VERSION    "2.1.0"
+#define SERVER_VERSION    "2.2.0"
 #define SERVER_PIDVERSION SERVER_VERSION
 
 #define SOCKIO_TIMEOUT 5*60
