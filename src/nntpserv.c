@@ -2956,8 +2956,8 @@ void server(SOCKET s)
    struct var var;
 
    struct hostent *hostent;
-   struct sockaddr_in fromsa;
-   int fromsa_len = sizeof(struct sockaddr_in);
+   struct sockaddr_in6 fromsa;
+   int fromsa_len = sizeof(struct sockaddr_in6);
 
    os_getexclusive();
    server_openconnections++;
@@ -3016,16 +3016,16 @@ void server(SOCKET s)
       return;
    }
 
-   sprintf(var.clientid,"%s:%u",inet_ntoa(fromsa.sin_addr),ntohs(fromsa.sin_port));
+   inet_ntop(AF_INET6,&fromsa.sin6_addr,lookup,sizeof(lookup));
 
-   mystrncpy(lookup,inet_ntoa(fromsa.sin_addr),200);
+   snprintf(var.clientid,200,"%s:%u",lookup,ntohs(fromsa.sin6_port));
 
-   if((hostent=gethostbyaddr((char *)&fromsa.sin_addr,sizeof(fromsa.sin_addr),AF_INET)))
+   if((hostent=gethostbyaddr((char *)&fromsa.sin6_addr,sizeof(fromsa.sin6_addr),AF_INET6)))
       mystrncpy(lookup,hostent->h_name,200);
 
    os_logwrite("(%s) Connection established to %s",var.clientid,lookup);
 
-   if(!checkallow(&var,inet_ntoa(fromsa.sin_addr)))
+   if(!checkallow(&var,lookup))
    {
       socksendtext(&var,"502 Access denied." CRLF);
       os_logwrite("(%s) Access denied (not in allow list)",var.clientid);

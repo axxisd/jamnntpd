@@ -1,3 +1,5 @@
+2.1.0 IPv6 support added (patch by Konstantine Kuzov)
+
 2.0.3 Add XHDR response for newsreaders that require it
 
   - Give a successsful response to clients that request XHDR and tell you
