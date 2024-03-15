@@ -1374,7 +1374,7 @@ void command_xover(struct var *var)
                mimemakeheaderline(mimesubj,1000,"Subject",subject,chrs,NULL,cfg_noencode);
 
                memmove(mimefrom,mimefrom+6,strlen(mimefrom)-5);
-               memmove(mimesubj,mimesubj+9,strlen(mimefrom)-8);
+               memmove(mimesubj,mimesubj+9,strlen(mimesubj)-8);
 
                stripctrl(mimesubj);
                stripctrl(mimefrom);
