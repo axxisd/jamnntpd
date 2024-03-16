@@ -1,3 +1,14 @@
+2.2.2 Update example xlat config to be more sensible
+
+  - If posting with 'ISO-8859-1' / 'LATIN-1' it does not need to translate
+    it to CP437, nor do we want that to be a default setting
+  - Add some more allowed charsets to post with that don't need translation
+    - US-ASCII
+    - LATIN-1
+    - UTF-8
+  - Comment out some options that don't need to be default (read/post aliases)
+  - Update CHANGELOG
+
 2.2.1 Fix typo in commit ca51f51..
 
   - Update CHANGELOG

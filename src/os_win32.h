@@ -4,7 +4,7 @@
 
 #define close						 closesocket
 
-#define PLATFORM_NAME "Win32"
+#define PLATFORM_NAME "win32"
 
 #define CFG_BASEPATH ""
 #define LOG_BASEPATH ""
