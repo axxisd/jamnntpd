@@ -1,3 +1,9 @@
+2.3.0 Add 'smartquote' as a user toggle option during authentication
+
+  - Add more charset options for posting
+  - Update README with notes and examples about 'smartquote=on/off' option
+  - Update CHANGELOG
+
 2.2.2 Update example xlat config to be more sensible
 
   - If posting with 'ISO-8859-1' / 'LATIN-1' it does not need to translate

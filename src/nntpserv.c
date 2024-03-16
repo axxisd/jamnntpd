@@ -2617,7 +2617,7 @@ void command_post(struct var *var)
    
    /* Reformat quotes */
       
-   if(reference[0] && cfg_smartquote)
+   if(reference[0] && cfg_smartquote && var->opt_smartquote)
    {
       if((newtext=smartquote(text,allocsize,quotename)))
       {
@@ -2829,7 +2829,7 @@ void command_post(struct var *var)
 void command_authinfo(struct var *var)
 {
    uchar *tmp,*opt,*next,*equal;
-   bool flowed,showto,notearline;
+   bool flowed,showto,notearline,smartquote;
 
    if(!(tmp=parseinput(var)))
    {
@@ -2880,6 +2880,7 @@ void command_authinfo(struct var *var)
    flowed=var->opt_flowed;
    showto=var->opt_showto;
    notearline=var->opt_notearline;
+   smartquote=var->opt_smartquote;
 
    if(strchr(var->loginname,'/'))
    {
@@ -2933,9 +2934,17 @@ void command_authinfo(struct var *var)
             return;
          }
       }
+      else if(stricmp(opt,"smartquote")==0)
+      {
+         if(!(setboolonoff(equal,&smartquote)))
+         {
+            sockprintf(var,"482 Unknown setting %s for option %s, use on or off" CRLF,equal,opt);
+            return;
+         }
+      }
       else
       {
-         sockprintf(var,"482 Unknown option %s, known options: flowed, showto, notearline" CRLF,opt);
+         sockprintf(var,"482 Unknown option %s, known options: flowed, showto, notearline, smartquote" CRLF,opt);
          return;
       }
 
@@ -2960,6 +2969,7 @@ void command_authinfo(struct var *var)
    var->opt_flowed=flowed;
    var->opt_showto=showto;
    var->opt_notearline=notearline;
+   var->opt_smartquote=smartquote;
 
    return;
 }
@@ -3002,6 +3012,7 @@ void server(SOCKET s)
    var.opt_flowed=cfg_def_flowed;
    var.opt_showto=cfg_def_showto;
    var.opt_notearline=cfg_notearline;
+   var.opt_smartquote=cfg_smartquote;
 
    if(getpeername(s,(struct sockaddr *)&fromsa,&fromsa_len) == SOCKET_ERROR)
    {
