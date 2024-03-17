@@ -2752,11 +2752,14 @@ void command_post(struct var *var)
       
       if(chrs[0])
       {
-         if(stricmp(chrs,"UTF-8")!=0) sprintf(line,"CHRS: %s 2",chrs);
-         else                         strcpy(line,"CHRS: UTF-8 4");
+         if(stricmp(chrs,"US-ASCII")==0)
+            sprintf(line,"CHRS: %s 1",chrs);
+         else if(stricmp(chrs,"UTF-8")==0) 
+            sprintf(line,"CHRS: %s 4",chrs);
+         else 
+            sprintf(line,"CHRS: %s 2",chrs);
          addjamfield(SubPacket_PS,JAMSFLD_FTSKLUDGE,line);
       }
-      
       if(codepage[0])
       {
          sprintf(line,"CODEPAGE: %s",codepage);
