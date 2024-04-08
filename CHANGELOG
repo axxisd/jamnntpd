@@ -1,3 +1,7 @@
+2.4.0 Add options for replacing non-breaking spaces and deleting stuffed spaces in quoted text (patch by @cnb)
+  - Update README with new options
+  - Update CHANGELOG
+
 2.3.3 Revert previous commit
 
   - Update CHANGELOG
