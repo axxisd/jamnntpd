@@ -1,3 +1,6 @@
+2.4.1 Set 'delssq' on by default
+  - Remove stuffed spaces from quotes (format=flowed) by default (patch by @cnb)
+
 2.4.0 Add options for replacing non-breaking spaces and deleting stuffed spaces in quoted text (patch by @cnb)
   - Update README with new options
   - Update CHANGELOG
