@@ -1106,12 +1106,15 @@ void command_abhs(struct var *var,uchar *cmd)
       }
 
       if(var->opt_flowed)
+      {
          strcpy(format,"flowed");
+         sockprintf(var,"Content-Type: text/plain; charset=%s; format=%s" CRLF,chrs,format);
+      }
+         else
+      {
+            sockprintf(var,"Content-Type: text/plain; charset=%s;" CRLF,chrs);
+      }
 
-      else
-         strcpy(format,"fixed");
-
-      sockprintf(var,"Content-Type: text/plain; charset=%s; format=%s" CRLF,chrs,format);
       sockprintf(var,"Content-Transfer-Encoding: %s" CRLF,encoding);
    }
 
@@ -2776,7 +2779,7 @@ void command_post(struct var *var)
       
       if(chrs[0])
       {
-         if(stricmp(chrs,"US-ASCII")==0)
+         if(stricmp(chrs,"ASCII")==0)
             sprintf(line,"CHRS: %s 1",chrs);
          else if(stricmp(chrs,"UTF-8")==0) 
             sprintf(line,"CHRS: %s 4",chrs);

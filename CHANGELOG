@@ -1,3 +1,9 @@
+2.4.2 Change "US-ASCII" CHRS kludge to "ASCII" per FTS-5003 (pointed out by @cnb)
+  - Remove "format=fixed" from Content-Type
+  - Change US-ASCII post alias to ASCII in xlat config
+  - Remove post alias for US-ASCII to ISO-8859-1 in xlat config
+  - Update CHANGELOG
+
 2.4.1 Set 'delssq' on by default
   - Remove stuffed spaces from quotes (format=flowed) by default (patch by @cnb)
 
