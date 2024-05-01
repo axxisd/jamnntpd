@@ -1,3 +1,9 @@
+2.4.3 Improve 'nonbsp' option
+    - Replace Unicode NBSPs only in UTF-8 articles (patch by @cnb)
+    - Replace NBSPs also in ISO-8859-* and Windows-125x articles (patch by
+      @cnb)
+    - Update CHANGELOG
+
 2.4.2 Change "US-ASCII" CHRS kludge to "ASCII" per FTS-5003 (pointed out by @cnb)
   - Remove "format=fixed" from Content-Type
   - Change US-ASCII post alias to ASCII in xlat config
