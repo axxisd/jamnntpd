@@ -1,3 +1,6 @@
+2.4.4 Fix typo in previous commit
+    - Update CHANGELOG
+
 2.4.3 Improve 'nonbsp' option
     - Replace Unicode NBSPs only in UTF-8 articles (patch by @cnb)
     - Replace NBSPs also in ISO-8859-* and Windows-125x articles (patch by
