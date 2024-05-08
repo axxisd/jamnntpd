@@ -1,3 +1,6 @@
+2.4.6 Fix "Re:" not removed from empty subjects (patch by @cnb)
+    - Update CHANGELOG
+
 2.4.4 Fix typo in previous commit
     - Update CHANGELOG
 
