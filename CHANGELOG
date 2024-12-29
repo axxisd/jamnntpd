@@ -1,3 +1,14 @@
+2.4.8
+
+  * nntpserv.c
+    - Change LINE_WIDTH to allow messages to fit the width of the client's
+      screen, and to not force wrap flowed text.
+
+  * nntpserv.h
+    - Minor version bump
+
+  * Update CHANGELOG
+
 2.4.6 Fix "Re:" not removed from empty subjects (patch by @cnb)
     - Update CHANGELOG
 
