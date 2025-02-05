@@ -1,3 +1,13 @@
+2.5.0
+
+  * README
+    - Minor spelling changes, update version and date.
+
+  * nntpserv.h
+    - Minor version bump
+
+  * Update CHANGELOG
+
 2.4.9
 
   * nntpserv.c
